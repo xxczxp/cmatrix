@@ -33,6 +33,7 @@ void multiMM(matrix a, matrix b, matrix result) {
 
     if(a.c != b.r){
         fprintf(stderr,"矩阵一的行和矩阵二的列不相等");
+        return;
     }
     double sum = 0;
     result.r = a.r;
@@ -42,9 +43,9 @@ void multiMM(matrix a, matrix b, matrix result) {
     for (int i = 0; i < b.c; ++i) {       //遍历b的列
         for (int j = 0; j < a.r; ++j) {     //遍历a的行
             for (int k = 0; k < n; ++k) {
-                sum+=dex(a,i,k)*dex(b,k,j);
+                sum=sum+dex(a,j,k)*dex(b,k,i);
             }
-            dex(result,i,j)=sum;
+            dex(result,j,i)=sum;
             sum=0;
         }
     }
@@ -61,7 +62,14 @@ void eye(matrix m){     //单位矩阵
     }
 }
 
-
+void matrixprint(matrix m){
+    for (int i = 0; i < m.r; ++i) {
+        for (int j = 0; j < m.c; ++j) {
+            printf("%7.3f",dex(m,i,j));
+        }
+        printf("\n");
+    }
+}
 
 
 
