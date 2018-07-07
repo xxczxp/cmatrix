@@ -94,4 +94,62 @@ void SimLU_U(matrix A, matrix LB) {   //A化简为最简阶梯矩阵，LB与其�
     
 }
 
+//如果矩阵不可逆则返回零，可逆返回1
+int reverseMatrix(matrix A,matrix LB){
+    if(A.r!=A.c) {
+        printf( "矩阵不可逆");
+        return 0;
+    }
+    int i,j;
+    double temp;
+
+    for (i = 0; i < A.r;i++) {
+
+
+
+
+        //主元不能为零
+        if(dex(A,i,i)==0)
+            for (j = i+1; j < A.r; ++j) {
+                if(dex(A,j,i) != 0) {
+                    rowChange(A,i,j,i);
+                    rowChange(LB,i,j,0);
+                }
+            };
+
+        //如果这列全是零
+        if(j>=A.r){
+            printf("矩阵不可逆");
+            return 0;
+        }
+
+        //主元归一
+        temp=1.0/dex(A,i,i);
+        rowMuti(A,i,temp,i);
+        rowMuti(LB,i,temp,0);
+
+        //主元下方都归零
+        for (int k = i+1; k < A.r; ++k) {
+            if(dex(A,k,i) != 0){
+                temp=-dex(A,k,i);
+                rowAdd(A,k,i,temp,i);
+                rowAdd(LB,k,i,temp,0);
+            }
+        }
+    }
+
+    //上三角化为单位阵
+    for (i = i-1; i > 0; --i) {
+        for (j = 0; j < i; ++j) {
+            if(dex(A,j,i) != 0){
+                rowAdd(LB,j,i,-dex(A,j,i),0);
+            }
+        }
+    }
+    return 1;
+
+}
+
+
+
 #endif //PROJECT_ROWSIM_H
