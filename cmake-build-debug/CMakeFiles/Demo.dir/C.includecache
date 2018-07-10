@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/pengweihao/Documents/cdemo/matrix/RowSim.h
+stdlib.h
+-
+matrix_base.h
+/Users/pengweihao/Documents/cdemo/matrix/matrix_base.h
+
+/Users/pengweihao/Documents/cdemo/matrix/matrix_base.h
+stdio.h
+-
+math.h
+-
+string.h
+-
+
+/Users/pengweihao/Documents/cdemo/matrix/matrix_dynamic.h
+stdlib.h
+-
+RowSim.h
+/Users/pengweihao/Documents/cdemo/matrix/RowSim.h
+
+/Users/pengweihao/Documents/cdemo/matrix/try.c
+stdio.h
+-
+string.h
+-
+matrix_base.h
+/Users/pengweihao/Documents/cdemo/matrix/matrix_base.h
+RowSim.h
+/Users/pengweihao/Documents/cdemo/matrix/RowSim.h
+matrix_dynamic.h
+/Users/pengweihao/Documents/cdemo/matrix/matrix_dynamic.h
+
