@@ -23,7 +23,7 @@ int main(){
     matrix c;
     c.r=c.c=3;
     c.data=malloc(9* sizeof(double));
-    SimLU_U(a,b);
+    rowSim(a, b);
     matrixprint(a);
     matrixprint(b);
     multiMM(a,b,c);
