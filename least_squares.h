@@ -2,8 +2,8 @@
 // Created by 彭伟浩 on 2018/7/9.
 //
 
-#ifndef PROJECT_LEASTSQUARE_H
-#define PROJECT_LEASTSQUARE_H
+#ifndef PROJECT_LEAST_SQUARES_H
+#define PROJECT_LEAST_SQUARES_H
 
 #include "matrix_base.h"
 #include <math.h>
@@ -11,7 +11,7 @@
 
 //x是一组数,n是x的数量，times是x的最高次幂
 //未测试。。。
-void vandermondeMatrix(double *x,int n,int times,matrix result){
+void vandermonde_matrix(double *x,int n,int times,matrix result){
 
     result.r=n;
     result.c=times+1;

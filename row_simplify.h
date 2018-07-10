@@ -2,26 +2,26 @@
 // Created by 彭伟浩 on 2018/7/4.
 //
 
-#ifndef PROJECT_ROWSIM_H
-#define PROJECT_ROWSIM_H
+#ifndef PROJECT_ROW_SIMPLIFY_H
+#define PROJECT_ROW_SIMPLIFY_H
 
 #include <stdlib.h>
 #include "matrix_base.h"
 
-void rowAdd(matrix m, int target, int source, double n, int start) {  //将source行乘上n加到target行，从start一直计算到结束
+void row_add(matrix m, int target, int source, double n, int start) {  //将source行乘上n加到target行，从start一直计算到结束
     for (int i = start; i < m.c; ++i) {
         dex(m, target, i) += n * dex(m, source, i);
     }
 
 }
 
-void rowMuti(matrix m, int target, double n, int start) {
+void row_multiply(matrix m, int target, double n, int start) {
     for (int i = start; i < m.c; ++i) {
         dex(m, target, i) *= n;
     }
 }
 
-void rowChange(matrix m, int target, int source, int start) {
+void row_swap(matrix m, int target, int source, int start) {
     double temp;
     for (int i = start; i < m.c; ++i) {
         temp = dex(m, target, i);
@@ -38,8 +38,8 @@ int rowSim(matrix A, matrix LB) {
         return -1;
     }
 
-    int reverseable=1;
-    int *maindex = malloc(sizeof(int)*A.r);
+    int reversible=1;
+    int *main_dex = malloc(sizeof(int)*A.r);
     int cl = 0;
     int i,j;
     double temp;
@@ -62,7 +62,7 @@ int rowSim(matrix A, matrix LB) {
         
         //如果这列全是零
         if(j>=A.r){
-            reverseable=0;
+            reversible=0;
             ++cl;
             continue;
         }
@@ -97,7 +97,7 @@ int rowSim(matrix A, matrix LB) {
         }
     }
 
-    return reverseable;
+    return reversible;
 }
 
 
@@ -159,4 +159,4 @@ int reverseMatrix(matrix A,matrix LB){
 }
 
 
-#endif //PROJECT_ROWSIM_H
+#endif //PROJECT_ROW_SIMPLIFY_H

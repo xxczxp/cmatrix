@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 #define dex(matrix, a, b) matrix.data[a*matrix.c+b]
-#define Mmalloc(a,b) malloc(a*b*sizeof(double))
+#define matrix_malloc(a,b) malloc(a*b*sizeof(double))
 
 typedef struct {
     int r;
@@ -29,7 +29,7 @@ typedef struct {
 
 
 
-void multiMM(matrix a, matrix b, matrix result) {
+void matrix_multiply(matrix a, matrix b, matrix result) {
 
     if(a.c != b.r){
         fprintf(stderr,"矩阵一的行和矩阵二的列不相等,无法相乘");
@@ -71,7 +71,7 @@ matrix d_eye(int a){
     return m;
 }
 
-void matrixprint(matrix m){
+void matrix_print(matrix m){
     for (int i = 0; i < m.r; ++i) {
         for (int j = 0; j < m.c; ++j) {
             printf("%7.3f",dex(m,i,j));
@@ -80,7 +80,7 @@ void matrixprint(matrix m){
     }
 }
 
-void joinRowMatrix(matrix a,matrix b,matrix result){
+void join_row_matrix(matrix a, matrix b, matrix result){
     if(a.r != b.r){
         fprintf(stderr,"矩阵一的行和矩阵二的行不相等,无法进行拼接");
         return;

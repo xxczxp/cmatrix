@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "matrix_base.h"
-#include "RowSim.h"
-#include "matrix_dynamic.h"
+#include "row_simplify.h"
 
 int main(){
     matrix a;
@@ -24,10 +23,10 @@ int main(){
     c.r=c.c=3;
     c.data=malloc(9* sizeof(double));
     rowSim(a, b);
-    matrixprint(a);
-    matrixprint(b);
-    multiMM(a,b,c);
-    matrixprint(c);
+    matrix_print(a);
+    matrix_print(b);
+    matrix_multiply(a, b, c);
+    matrix_print(c);
     return 0;
 }
 
