@@ -30,11 +30,15 @@ void rowChange(matrix m, int target, int source, int start) {
     }
 }
 
-void SimLU_U(matrix A, matrix LB) {   //A化简为最简阶梯矩阵，LB与其同步
+
+//A化简为最简阶梯矩阵，LB与其同步,返回1则A可逆，返回0则A不可逆，返回-1则A和LB的行不相等
+int rowSim(matrix A, matrix LB) {
     if(A.r!=LB.r){
         fprintf(stderr,"矩阵一的行数和矩阵二的行数不相等");
+        return -1;
     }
 
+    int reverseable=1;
     int *maindex = malloc(sizeof(int)*A.r);
     int cl = 0;
     int i,j;
@@ -58,6 +62,7 @@ void SimLU_U(matrix A, matrix LB) {   //A化简为最简阶梯矩阵，LB与其�
         
         //如果这列全是零
         if(j>=A.r){
+            reverseable=0;
             ++cl;
             continue;
         }
@@ -91,9 +96,12 @@ void SimLU_U(matrix A, matrix LB) {   //A化简为最简阶梯矩阵，LB与其�
             }
         }
     }
-    
+
+    return reverseable;
 }
 
+
+//未测试。。。
 //如果矩阵不可逆则返回零，可逆返回1
 int reverseMatrix(matrix A,matrix LB){
     if(A.r!=A.c) {
@@ -149,7 +157,6 @@ int reverseMatrix(matrix A,matrix LB){
     return 1;
 
 }
-
 
 
 #endif //PROJECT_ROWSIM_H
