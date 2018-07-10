@@ -27,9 +27,7 @@ typedef struct {
 
 
 
-double lndex(matrix m, int a, int b) {
-    return m.data[m.c * a + b];
-}
+
 
 void multiMM(matrix a, matrix b, matrix result) {
 
